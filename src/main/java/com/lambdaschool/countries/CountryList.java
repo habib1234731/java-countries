@@ -208,4 +208,10 @@ public class CountryList {
         countryList.add(new Country("Antigua and Barbuda",104084,440,32));
         countryList.add(new Country("Seychelles",95702,460,36));
     }
+        public Country findCountries (Filter filterer) {
+            for (Country c : countryList) {
+                if (filterer.filter(c)) return c;
+            }
+            return null;
+        }
 }

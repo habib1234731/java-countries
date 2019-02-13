@@ -18,8 +18,9 @@ public class NameController {
 
     @RequestMapping("/begin")
     public ArrayList<Country> getWithLetter(@RequestParam(value = "letter") char ch) {
-        CountriesApplication.countryList.countryList.sort((e1, e2) ->
-                e1.getName().toLowerCase().startsWith(Character.toString(ch).toLowerCase()).compareToIgnoreCase(e2.getName()));
+        CountriesApplication.countryList.findCountries(e -> e.getName().toLowerCase().startsWith(Character.toString(ch)));
+        System.out.println(CountriesApplication.countryList);
+//        CountriesApplication.countryList.sort((e1, e2) -> e1.getName().compareToIgnoreCase(e2.getName()));
         return CountriesApplication.countryList.countryList;
     }
 }
