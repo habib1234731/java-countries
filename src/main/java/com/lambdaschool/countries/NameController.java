@@ -28,4 +28,11 @@ public class NameController {
 //             e1.getName().compareToIgnoreCase(e2.getName()));
         return temp;
     }
+
+    @RequestMapping("/size")
+    public ArrayList<Country> getWithSize(@RequestParam(value = "length") long length) {
+        ArrayList<Country> temp = CountriesApplication.countryList.findCountries(e -> e.getName().length() >= length);
+        temp.sort((e1, e2) -> e1.getName().compareToIgnoreCase(e2.getName()));
+        return temp;
+    }
 }
