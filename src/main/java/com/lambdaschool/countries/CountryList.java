@@ -242,4 +242,24 @@ public class CountryList {
             }
             return temp == null ? null : temp;
         }
+
+        public Country minAge () {
+            long id = 1;
+            Country temp = CountriesApplication.countryList.findCountry(e -> (e.getId() == id));
+
+            for (Country c : countryList) {
+                if (c.getMedianAge() < temp.getMedianAge()) temp = c;
+            }
+            return temp == null ? null : temp;
+        }
+
+        public Country maxAge () {
+            long id = 1;
+            Country temp = CountriesApplication.countryList.findCountry(e -> (e.getId() == id));
+
+            for (Country c : countryList) {
+                if (c.getMedianAge() > temp.getMedianAge()) temp = c;
+            }
+            return temp == null ? null : temp;
+        }
 }
