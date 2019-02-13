@@ -13,4 +13,14 @@ public class PopulationController {
     public ArrayList<Country> getWithPopulation (@RequestParam(value = "people") long population) {
         return CountriesApplication.countryList.findCountries(e -> e.getPopulation() >= population);
     }
+
+    @RequestMapping("/min")
+    public Country getMinPopulation() {
+        return CountriesApplication.countryList.minPopulation();
+    }
+
+    @RequestMapping("/max")
+    public Country getMaxPopulation() {
+        return CountriesApplication.countryList.maxPopulation();
+    }
 }

@@ -215,4 +215,31 @@ public class CountryList {
             }
             return list;
         }
+
+        public Country findCountry (Filter filterer) {
+            for (Country c : countryList) {
+                if (filterer.filter(c)) return c;
+            }
+            return null;
+        }
+
+        public Country minPopulation () {
+            long id = 1;
+            Country temp = CountriesApplication.countryList.findCountry(e -> (e.getId() == id));
+
+            for (Country c : countryList) {
+                if (c.getPopulation() < temp.getPopulation()) temp = c;
+            }
+            return temp == null ? null : temp;
+        }
+
+        public Country maxPopulation () {
+            long id = 1;
+            Country temp = CountriesApplication.countryList.findCountry(e -> (e.getId() == id));
+
+            for (Country c : countryList) {
+                if (c.getPopulation() > temp.getPopulation()) temp = c;
+            }
+            return temp == null ? null : temp;
+        }
 }
